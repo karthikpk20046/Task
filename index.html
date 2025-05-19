@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Schedulo Lite - Smart Session Booking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="./src/styles.css" />
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <div class="container mx-auto px-4 py-8">
+    <!-- Header -->
+    <header class="mb-8 text-center">
+      <h1 class="text-3xl font-bold text-indigo-700 mb-2">
+        <i class="fas fa-calendar-alt mr-2"></i>Schedulo Lite
+      </h1>
+      <p class="text-gray-600">Book your 1-on-1 session with ease</p>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8"></div>
+
+      <!-- Stats -->
+      <div class="bg-white rounded-lg shadow p-4 mb-8">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-semibold text-gray-700">Session Availability</h3>
+            <p class="text-sm text-gray-500">Today's booking status</p>
+          </div>
+          <div class="flex space-x-4">
+            <div class="text-center">
+              <span class="block text-2xl font-bold text-green-600" id="available-count">0</span>
+              <span class="text-xs text-gray-500">Available</span>
+            </div>
+            <div class="text-center">
+              <span class="block text-2xl font-bold text-red-600" id="booked-count">0</span>
+              <span class="text-xs text-gray-500">Booked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="modal modal-closed fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+        <div class="p-6">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold text-gray-800" id="modal-time">Book Slot</h3>
+            <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <form id="booking-form">
+            <input type="hidden" id="slot-time">
+            <div class="mb-4">
+              <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+              <input type="text" id="name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div class="flex justify-end space-x-3">
+              <button type="button" id="cancel-booking" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                Cancel
+              </button>
+              <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                Confirm Booking
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-4 right-4 hidden">
+      <div class="bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center">
+        <i class="fas fa-check-circle mr-2"></i>
+        <span id="toast-message">Booking confirmed!</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="./src/app.js"></script>
+</body>
+</html>
